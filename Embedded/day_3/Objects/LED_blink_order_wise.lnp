@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\LED_blink_order.obj" 
+TO ".\Objects\LED_blink_order_wise" 
+PRINT(".\Listings\LED_blink_order_wise.m51")
