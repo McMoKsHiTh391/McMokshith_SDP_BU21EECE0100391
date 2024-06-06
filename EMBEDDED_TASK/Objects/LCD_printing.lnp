@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\LCD_printing.obj" 
+TO ".\Objects\LCD_printing.c" 
+PRINT(".\Listings\LCD_printing.m51")

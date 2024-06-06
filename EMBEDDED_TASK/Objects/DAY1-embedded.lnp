@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\blinking_led.obj" 
+TO ".\Objects\DAY1-embedded" 
+PRINT(".\Listings\DAY1-embedded.m51")

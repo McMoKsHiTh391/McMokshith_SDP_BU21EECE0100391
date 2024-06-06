@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Sample_code_from_GPT.obj" 
+TO ".\Objects\Voltage_measurement" 
+PRINT(".\Listings\Voltage_measurement.m51")
