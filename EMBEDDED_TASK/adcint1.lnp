@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"LCD_printing.obj" 
+TO "adcint1.c" 
+PRINT(".\Listings\adcint1.m51")
