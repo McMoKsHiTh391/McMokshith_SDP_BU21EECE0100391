@@ -1,0 +1,48 @@
+C51 COMPILER V9.60.7.0   LED_BLINK_ORDER                                                   05/29/2024 18:11:46 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LED_BLINK_ORDER
+OBJECT MODULE PLACED IN .\Objects\LED_blink_order.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LED_blink_order.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Li
+                    -stings\LED_blink_order.lst) TABS(2) OBJECT(.\Objects\LED_blink_order.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          sbit LED = P1^0; // Define LED at P1.0
+   4          
+   5          void timer0Init() {
+   6   1          TMOD |= 0x02;  // Set Timer 0 to mode 2 (8-bit auto-reload)
+   7   1          TH0 = 0xFA;    // Load initial value to generate approximately 2ms delay (with 12MHz clock)
+   8   1          TL0 = 0xFA;    // Load the same initial value to TL0
+   9   1          ET0 = 1;       // Enable Timer 0 interrupt
+  10   1          EA = 1;        // Enable global interrupts
+  11   1          TR0 = 1;       // Start Timer 0
+  12   1      }
+  13          
+  14          void timer0_ISR() interrupt 1 {
+  15   1          LED = ~LED;  // Toggle LED state
+  16   1      }
+  17          
+  18          void main() {
+  19   1          LED = 0;      // Ensure LED is off initially
+  20   1          timer0Init(); // Initialize and start Timer 0
+  21   1          while (1) {
+  22   2              // Main loop can perform other tasks while Timer 0 ISR handles LED blinking
+  23   2          }
+  24   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     26    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
