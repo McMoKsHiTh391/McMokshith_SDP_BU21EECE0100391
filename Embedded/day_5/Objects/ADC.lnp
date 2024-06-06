@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\ADC_Data_Conversion.obj" 
+TO ".\Objects\ADC" 
+PRINT(".\Listings\ADC.m51")
