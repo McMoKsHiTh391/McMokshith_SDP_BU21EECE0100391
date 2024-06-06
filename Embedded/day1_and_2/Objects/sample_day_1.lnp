@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Blink_LED.obj" 
+TO ".\Objects\sample_day_1" 
+PRINT(".\Listings\sample_day_1.m51")
