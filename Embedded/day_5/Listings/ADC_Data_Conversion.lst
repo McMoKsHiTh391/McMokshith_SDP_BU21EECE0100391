@@ -1,0 +1,71 @@
+C51 COMPILER V9.60.7.0   ADC_DATA_CONVERSION                                               05/31/2024 11:54:33 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE ADC_DATA_CONVERSION
+OBJECT MODULE PLACED IN .\Objects\ADC_Data_Conversion.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ADC_Data_Conversion.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\ADC_Data_Conversion.lst) TABS(2) OBJECT(.\Objects\ADC_Data_Conversion.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2           sbit ALE = P2^4;
+   3           sbit OE = P2^5;
+   4           sbit SC = P2^6;
+   5           sbit EOC = P2^7; 
+   6            //Declaring the input selection pin
+   7           sbit ADDR_A = P2^0;
+   8           sbit ADDR_B = P2^1;
+   9           sbit ADDR_C = P2^2;
+  10            //void MSDelay(unsigned int);
+  11            void MSDelay(unsigned int delay) 
+  12            {
+  13   1          unsigned int i,j; 
+  14   1          for(i=0;i<delay;i++)
+  15   1          for(j=0;j<1275;j++); 
+  16   1        }
+  17            void main() 
+  18            { 
+  19   1          unsigned char ADC_Value = 0;
+  20   1          P1 = 0xFF; 
+  21   1          EOC = 1;
+  22   1          ALE = 0;
+  23   1          OE = 0;
+  24   1          SC = 0;
+  25   1         while(1)
+  26   1          { 
+  27   2          ADDR_C = 0;
+  28   2          ADDR_B = 0; 
+  29   2          ADDR_A = 0; 
+  30   2          MSDelay(10); 
+  31   2          ALE = 1; 
+  32   2          MSDelay(10); 
+  33   2          SC = 1; 
+  34   2          MSDelay(10);
+  35   2          ALE = 0;
+  36   2          SC = 0;
+  37   2          while(EOC==1); 
+  38   2          //while(EOC==0); 
+  39   2          OE=1;
+  40   2          MSDelay(10); 
+  41   2          ADC_Value= P1; 
+  42   2          P3 = ADC_Value; 
+  43   2          OE = 0 ; 
+  44   2          }
+  45   1        } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     92    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   ADC_DATA_CONVERSION                                               05/31/2024 11:54:33 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
