@@ -1,0 +1,235 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/30/2024  12:12:25  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\LCD_Data_Printing.obj TO .\Objects\LCD_Printing PRINT (.\Li
+>> stings\LCD_Printing.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\LCD_Data_Printing.obj (LCD_DATA_PRINTING)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\LCD_Printing (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0026H     UNIT         _DATA_GROUP_
+            IDATA   002EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0178H     UNIT         ?C?LIB_CODE
+            CODE    0978H     00BDH     UNIT         ?PR?MAIN?LCD_DATA_PRINTING
+            CODE    0A35H     0040H     UNIT         ?CO?LCD_DATA_PRINTING
+            CODE    0A75H     002BH     UNIT         ?PR?_WRITESTRINGTOLCD?LCD_DATA_PRINTING
+            CODE    0AA0H     0020H     UNIT         ?PR?_DELAY?LCD_DATA_PRINTING
+            CODE    0AC0H     0011H     UNIT         ?PR?_WRITECOMMANDTOLCD?LCD_DATA_PRINTING
+            CODE    0AD1H     0011H     UNIT         ?PR?_WRITEDATATOLCD?LCD_DATA_PRINTING
+            CODE    0AE2H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LCD_Printing (?C_STARTUP)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?LCD_DATA_PRINTING
+
+?PR?MAIN?LCD_DATA_PRINTING                       0008H    0021H
+  +--> ?CO?LCD_DATA_PRINTING
+  +--> ?PR?_WRITECOMMANDTOLCD?LCD_DATA_PRINTING
+  +--> ?PR?_WRITESTRINGTOLCD?LCD_DATA_PRINTING
+  +--> ?PR?_WRITEDATATOLCD?LCD_DATA_PRINTING
+
+?PR?_WRITECOMMANDTOLCD?LCD_DATA_PRINTING         -----    -----
+  +--> ?PR?_DELAY?LCD_DATA_PRINTING
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/30/2024  12:12:25  PAGE 2
+
+
+
+?PR?_WRITESTRINGTOLCD?LCD_DATA_PRINTING          0029H    0005H
+  +--> ?PR?_WRITEDATATOLCD?LCD_DATA_PRINTING
+
+?PR?_WRITEDATATOLCD?LCD_DATA_PRINTING            -----    -----
+  +--> ?PR?_DELAY?LCD_DATA_PRINTING
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LCD_Printing (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0AE2H         SEGMENT       ?C_C51STARTUP
+  I:002EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0AE5H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0AE2H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0AE2H         LINE#         133
+  C:0AE4H         LINE#         134
+  C:0AE5H         LINE#         135
+  C:0AE6H         LINE#         136
+  C:0AE8H         LINE#         185
+  C:0AEBH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        LCD_DATA_PRINTING
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0AA0H         PUBLIC        _delay
+  C:0A75H         PUBLIC        _WriteStringToLCD
+  C:0AD1H         PUBLIC        _WriteDataToLCD
+  C:0978H         PUBLIC        main
+  C:0A5AH         SYMBOL        _?ix1000
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/30/2024  12:12:25  PAGE 3
+
+
+  B:00A0H.2       PUBLIC        e
+  B:00A0H.0       PUBLIC        rs
+  B:00A0H.1       PUBLIC        rw
+  C:0AC0H         PUBLIC        _WriteCommandToLCD
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        ch1
+  D:0023H         SYMBOL        j
+  D:0025H         SYMBOL        k
+  D:0027H         SYMBOL        MyData
+  -------         ENDDO         
+  C:0978H         LINE#         10
+  C:0978H         LINE#         11
+  C:0978H         LINE#         13
+  C:098BH         LINE#         15
+  C:0991H         LINE#         18
+  C:0996H         LINE#         19
+  C:099BH         LINE#         20
+  C:09A0H         LINE#         21
+  C:09A5H         LINE#         22
+  C:09AAH         LINE#         25
+  C:09B3H         LINE#         26
+  C:09B8H         LINE#         27
+  C:09C6H         LINE#         28
+  C:09C6H         LINE#         29
+  C:09C9H         LINE#         30
+  C:09D3H         LINE#         31
+  C:09D8H         LINE#         32
+  C:09D8H         LINE#         33
+  C:09DDH         LINE#         34
+  C:09EEH         LINE#         35
+  C:09EEH         LINE#         36
+  C:09EEH         LINE#         37
+  C:09F3H         LINE#         38
+  C:09F8H         LINE#         39
+  C:0A01H         LINE#         40
+  C:0A06H         LINE#         41
+  C:0A18H         LINE#         42
+  C:0A2AH         LINE#         43
+  C:0A33H         LINE#         44
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0AA0H         LINE#         47
+  C:0AA0H         LINE#         48
+  C:0AA0H         LINE#         50
+  C:0AAAH         LINE#         51
+  C:0ABFH         LINE#         52
+  -------         ENDPROC       _DELAY
+  -------         PROC          _WRITECOMMANDTOLCD
+  D:0007H         SYMBOL        ch
+  C:0AC0H         LINE#         54
+  C:0AC0H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/30/2024  12:12:25  PAGE 4
+
+
+  C:0AC0H         LINE#         56
+  C:0AC2H         LINE#         57
+  C:0AC4H         LINE#         58
+  C:0AC6H         LINE#         59
+  C:0AC8H         LINE#         60
+  C:0ACAH         LINE#         61
+  -------         ENDPROC       _WRITECOMMANDTOLCD
+  -------         PROC          _WRITEDATATOLCD
+  D:0007H         SYMBOL        ch
+  C:0AD1H         LINE#         64
+  C:0AD1H         LINE#         65
+  C:0AD1H         LINE#         66
+  C:0AD3H         LINE#         67
+  C:0AD5H         LINE#         68
+  C:0AD7H         LINE#         69
+  C:0AD9H         LINE#         70
+  C:0ADBH         LINE#         71
+  -------         ENDPROC       _WRITEDATATOLCD
+  -------         PROC          _WRITESTRINGTOLCD
+  D:0029H         SYMBOL        ch
+  -------         DO            
+  D:002CH         SYMBOL        i
+  -------         ENDDO         
+  C:0A75H         LINE#         74
+  C:0A7BH         LINE#         75
+  C:0A7BH         LINE#         77
+  C:0A92H         LINE#         78
+  C:0A92H         LINE#         79
+  C:0A95H         LINE#         80
+  C:0A9FH         LINE#         81
+  -------         ENDPROC       _WRITESTRINGTOLCD
+  -------         ENDMOD        LCD_DATA_PRINTING
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDOPTR
+  C:08F6H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:0923H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0179H BYTE (18%) *
+******************************************************************************
+
+Program Size: data=47.0 xdata=0 code=753
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

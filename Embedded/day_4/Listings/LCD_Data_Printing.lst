@@ -1,0 +1,107 @@
+C51 COMPILER V9.60.7.0   LCD_DATA_PRINTING                                                 05/30/2024 12:12:24 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD_DATA_PRINTING
+OBJECT MODULE PLACED IN .\Objects\LCD_Data_Printing.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LCD_Data_Printing.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\LCD_Data_Printing.lst) TABS(2) OBJECT(.\Objects\LCD_Data_Printing.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          sbit rs=P2^0;
+   3          sbit rw=P2^1;
+   4          sbit e=P2^2;
+   5          void delay(unsigned int);
+   6          void WriteCommandToLCD(unsigned char ch);
+   7          void WriteDataToLCD(unsigned char ch);
+   8          void WriteStringToLCD(unsigned char ch[]);
+   9          
+  10          void main(void)
+  11          {
+  12   1          // unsigned char ch[]="ES TRAINING";
+  13   1          unsigned char ch1[]="GITAM UNIVERSITY, BANGLORE";
+  14   1          unsigned int j,k;
+  15   1          unsigned int MyData = 20;
+  16   1        
+  17   1        // LCD Initialization
+  18   1          WriteCommandToLCD(0x38); // 2 lines and 5x7 matrix
+  19   1          WriteCommandToLCD(0x01); // Clear display screen
+  20   1          WriteCommandToLCD(0x0c); // Display ON, Cursor OFF
+  21   1          WriteCommandToLCD(0x80); // Force cursor to begining (1st line)
+  22   1          WriteCommandToLCD(0x06); // Increment cursor (shift cursor to right)
+  23   1        
+  24   1        // Sending Data to LCD
+  25   1          WriteStringToLCD("ES TRAINING"); // Sending String to the LCD
+  26   1          WriteCommandToLCD(0xc0); // Force cursor to the beginning (2nd line)
+  27   1          for(j=0;ch1[j]!='\0';j++)
+  28   1            {
+  29   2              WriteDataToLCD(ch1[j]); // Sending one character to LCD
+  30   2            }
+  31   1          for(k=0;k<30;k++)
+  32   1            {
+  33   2              WriteCommandToLCD(0x1c); // Shift entire display right
+  34   2            }
+  35   1          while(1)
+  36   1          {
+  37   2            WriteCommandToLCD(0x01); // Clear display screen
+  38   2            WriteCommandToLCD(0x80); // Force cursor to the beginning (1st line)
+  39   2            WriteStringToLCD("CLASS STRENGTH"); // Sending string to LCD
+  40   2            WriteCommandToLCD(0xc0); // Force cursor to the beginning (2nd line)
+  41   2            WriteDataToLCD((MyData / 10) + 48); // Separating the first digit of Mydata
+  42   2            WriteDataToLCD((MyData % 10) + 48); // Separating the second digit of Mydata
+  43   2            WriteStringToLCD(" STUDENTS");
+  44   2          }
+  45   1      }
+  46          
+  47          void delay(unsigned int t) // Function for setting 1ms delay
+  48          {
+  49   1        unsigned int i,j;
+  50   1        for(i=0;i<t;i++)
+  51   1        for(j=0;j<1275;j++);
+  52   1      }
+  53          
+  54          void WriteCommandToLCD(unsigned char ch) // Function for sending command
+C51 COMPILER V9.60.7.0   LCD_DATA_PRINTING                                                 05/30/2024 12:12:24 PAGE 2   
+
+  55          {
+  56   1        e=1;
+  57   1        rs=0;
+  58   1        rw=0;
+  59   1        P1=ch;
+  60   1        e=0;
+  61   1        delay(20);
+  62   1      }
+  63          
+  64          void WriteDataToLCD(unsigned char ch) // Function for sending Data
+  65          {
+  66   1        e=1;
+  67   1        rs=1;
+  68   1        rw=0;
+  69   1        P1=ch;
+  70   1        e=0;
+  71   1        delay(20);
+  72   1      }
+  73          
+  74          void WriteStringToLCD(unsigned char ch[]) // Function for sending string
+  75          {
+  76   1        int i;
+  77   1         for(i=0;ch[i]!='\0';i++)
+  78   1          {
+  79   2            WriteDataToLCD(ch[i]);
+  80   2          }
+  81   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    298    ----
+   CONSTANT SIZE    =     64    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      38
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
